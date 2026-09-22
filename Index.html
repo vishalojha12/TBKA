@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Brilliant Kid's Academy</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial;
+    }
+
+    body{
+      background:#f2f2f2;
+      padding:15px;
+    }
+
+    .container{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .card{
+      background:white;
+      padding:20px;
+      border-radius:20px;
+      margin-bottom:20px;
+      box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1,h2{
+      margin-bottom:15px;
+    }
+
+    input,select{
+      width:100%;
+      padding:12px;
+      margin-top:10px;
+      border-radius:10px;
+      border:1px solid #ccc;
+    }
+
+    button{
+      margin-top:15px;
+      padding:12px 20px;
+      border:none;
+      border-radius:10px;
+      background:#0066ff;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:15px;
+    }
+
+    table th, table td{
+      border:1px solid #ddd;
+      padding:10px;
+      text-align:center;
+    }
+
+    .success{
+      color:green;
+      margin-top:10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+    <h1>The Brilliant Kid's Academy</h1>
+    <p>School Management System</p>
+  </div>
+
+  <div class="card">
+    <h2>Add Student</h2>
+
+    <input type="text" id="name" placeholder="Student Name">
+
+    <input type="text" id="class" placeholder="Class">
+
+    <input type="text" id="roll" placeholder="Roll Number">
+
+    <button onclick="addStudent()">Add Student</button>
+
+    <p class="success" id="msg"></p>
+  </div>
+
+  <div class="card">
+    <h2>Student List</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Roll</th>
+        </tr>
+      </thead>
+
+      <tbody id="studentTable"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Result Checker</h2>
+
+    <input type="text" id="searchRoll" placeholder="Enter Roll Number">
+
+    <button onclick="checkResult()">Check Result</button>
+  </div>
+
+  <div class="card">
+    <h2>Attendance</h2>
+
+    <select id="attendance">
+      <option>Present</option>
+      <option>Absent</option>
+    </select>
+
+    <button onclick="saveAttendance()">Save Attendance</button>
+  </div>
+
+  <div class="card">
+    <h2>Admin Login</h2>
+
+    <input type="text" id="adminUser" placeholder="Username">
+
+    <input type="password" id="adminPass" placeholder="Password">
+
+    <button onclick="adminLogin()">Login</button>
+  </div>
+
+</div>
+
+<script>
+
+let students = [];
+
+function addStudent(){
+
+  let name = document.getElementById('name').value;
+  let studentClass = document.getElementById('class').value;
+  let roll = document.getElementById('roll').value;
+
+  students.push({
+    name:name,
+    class:studentClass,
+    roll:roll
+  });
+
+  displayStudents();
+
+  document.getElementById('msg').innerHTML =
+  'Student Added Successfully';
+
+}
+
+function displayStudents(){
+
+  let table = document.getElementById('studentTable');
+
+  table.innerHTML = '';
+
+  students.forEach(student => {
+
+    table.innerHTML += `
+    <tr>
+      <td>${student.name}</td>
+      <td>${student.class}</td>
+      <td>${student.roll}</td>
+    </tr>
+    `;
+
+  });
+
+}
+
+function checkResult(){
+
+  let roll = document.getElementById('searchRoll').value;
+
+  alert('Result Found for Roll Number: ' + roll + '\nMarks: 85%');
+
+}
+
+function saveAttendance(){
+
+  let attendance = document.getElementById('attendance').value;
+
+  alert('Attendance Saved: ' + attendance);
+
+}
+
+function adminLogin(){
+
+  let user = document.getElementById('adminUser').value;
+  let pass = document.getElementById('adminPass').value;
+
+  if(user == 'admin' && pass == '9800'){
+    alert('Admin Login Successful');
+  }
+  else{
+    alert('Wrong Username or Password');
+  }
+
+}
+
+</script>
+
+</body>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Brilliant Kid's Academy</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial;
+    }
+
+    body{
+      background:#f2f2f2;
+      padding:15px;
+    }
+
+    .container{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .card{
+      background:white;
+      padding:20px;
+      border-radius:20px;
+      margin-bottom:20px;
+      box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1,h2{
+      margin-bottom:15px;
+    }
+
+    input,select{
+      width:100%;
+      padding:12px;
+      margin-top:10px;
+      border-radius:10px;
+      border:1px solid #ccc;
+    }
+
+    button{
+      margin-top:15px;
+      padding:12px 20px;
+      border:none;
+      border-radius:10px;
+      background:#0066ff;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:15px;
+    }
+
+    table th, table td{
+      border:1px solid #ddd;
+      padding:10px;
+      text-align:center;
+    }
+
+    .success{
+      color:green;
+      margin-top:10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card">
+    <h1>The Brilliant Kid's Academy</h1>
+    <p>School Management System</p>
+  </div>
+
+  <div class="card">
+    <h2>Add Student</h2>
+
+    <input type="text" id="name" placeholder="Student Name">
+
+    <input type="text" id="class" placeholder="Class">
+
+    <input type="text" id="roll" placeholder="Roll Number">
+
+    <button onclick="addStudent()">Add Student</button>
+
+    <p class="success" id="msg"></p>
+  </div>
+
+  <div class="card">
+    <h2>Student List</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Roll</th>
+        </tr>
+      </thead>
+
+      <tbody id="studentTable"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Result Checker</h2>
+
+    <input type="text" id="searchRoll" placeholder="Enter Roll Number">
+
+    <button onclick="checkResult()">Check Result</button>
+  </div>
+
+  <div class="card">
+    <h2>Attendance</h2>
+
+    <select id="attendance">
+      <option>Present</option>
+      <option>Absent</option>
+    </select>
+
+    <button onclick="saveAttendance()">Save Attendance</button>
+  </div>
+
+  <div class="card">
+    <h2>Admin Login</h2>
+
+    <input type="text" id="adminUser" placeholder="Username">
+
+    <input type="password" id="adminPass" placeholder="Password">
+
+    <button onclick="adminLogin()">Login</button>
+  </div>
+
+</div>
+
+<script>
+
+let students = [];
+
+function addStudent(){
+
+  let name = document.getElementById('name').value;
+  let studentClass = document.getElementById('class').value;
+  let roll = document.getElementById('roll').value;
+
+  students.push({
+    name:name,
+    class:studentClass,
+    roll:roll
+  });
+
+  displayStudents();
+
+  document.getElementById('msg').innerHTML =
+  'Student Added Successfully';
+
+}
+
+function displayStudents(){
+
+  let table = document.getElementById('studentTable');
+
+  table.innerHTML = '';
+
+  students.forEach(student => {
+
+    table.innerHTML += `
+    <tr>
+      <td>${student.name}</td>
+      <td>${student.class}</td>
+      <td>${student.roll}</td>
+    </tr>
+    `;
+
+  });
+
+}
+
+function checkResult(){
+
+  let roll = document.getElementById('searchRoll').value;
+
+  alert('Result Found for Roll Number: ' + roll + '\nMarks: 85%');
+
+}
+
+function saveAttendance(){
+
+  let attendance = document.getElementById('attendance').value;
+
+  alert('Attendance Saved: ' + attendance);
+
+}
+
+function adminLogin(){
+
+  let user = document.getElementById('adminUser').value;
+  let pass = document.getElementById('adminPass').value;
+
+  if(user == 'admin' && pass == '9800'){
+    alert('Admin Login Successful');
+  }
+  else{
+    alert('Wrong Username or Password');
+  }
+
+}
+
+</script>
+
+</body>
+</html>
